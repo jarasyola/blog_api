@@ -1,2 +1,2 @@
 # blog_api
-blog api using fastAPI
+Blog API using fastAPI
