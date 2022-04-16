@@ -1,9 +1,16 @@
 from fastapi import FastAPI
 from typing import Optional
+from pydantic import BaseModel
 
 
 
 app = FastAPI()
+
+
+class Blog(BaseModel):
+    title: str
+    body: str
+    published: Optional[bool]
 
 
 # where @app is  Routes/Endpoint/Decorator/Path(Python)
@@ -36,4 +43,6 @@ def show(id:int):
 def comments(id):
     return {'data':{'1','2',id}}
 
-
+@app.post('/blog')
+def create_blog(result:Blog):
+    return {f"Blog is created with blog title as {result.title}"}
